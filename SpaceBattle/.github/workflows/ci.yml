@@ -7,11 +7,9 @@ on:
     - '**.cs'
     - '**.csproj'
 
-
 jobs:
   build-and-test:
-
-    name: build-and-test-${{matrix.os}}
+    name: build-and-test-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -25,13 +23,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Checkstyle
-        run: dotnet format --verify-no-changes --check
+      run: dotnet format --verify-no-changes --check
 
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --configuration --no-restore /p:ContinuousIntegrationBuild=true
+      run: dotnet build --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./TestResults/'
