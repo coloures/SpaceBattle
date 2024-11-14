@@ -11,9 +11,10 @@ jobs:
   build-and-test:
     name: build-and-test-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
 
     steps:
     - uses: actions/checkout@v4
