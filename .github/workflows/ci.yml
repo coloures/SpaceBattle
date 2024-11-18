@@ -23,11 +23,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Change directory to project folder
-      run: cd SpaceBattle/SpaceBattle
-
     - name: Checkstyle
-      run: dotnet format SpaceBattle.sln --verify-no-changes
+      run: dotnet format ${{ github.workspace }}/SpaceBattle/SpaceBattle.sln --verify-no-changes
 
     - name: Restore dependencies
       run: dotnet restore
