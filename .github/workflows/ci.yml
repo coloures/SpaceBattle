@@ -27,13 +27,13 @@ jobs:
       run: dotnet format ${{ github.workspace }}/SpaceBattle/SpaceBattle.sln --verify-no-changes
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ${{ github.workspace }}/SpaceBattle
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+      run: dotnet build ${{ github.workspace }}/SpaceBattle --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./TestResults/'
+      run: dotnet test ${{ github.workspace }}/SpaceBattle --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./TestResults/'
       
     - name: Upload test results
       uses: actions/upload-artifact@v3
