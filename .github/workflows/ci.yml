@@ -33,7 +33,7 @@ jobs:
       run: dotnet build ${{ github.workspace }}/SpaceBattle --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
 
     - name: Test
-      run: dotnet test ${{ github.workspace }}/SpaceBattle --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./coverage.cobertura.xml
+      run: dotnet test ${{ github.workspace }}/SpaceBattle --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
       
     - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@master
