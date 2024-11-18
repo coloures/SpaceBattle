@@ -27,7 +27,7 @@ public class MoveCommandTest
     {
         var MovingObject = new Mock<IMovingObject>();
         MovingObject.SetupGet(m => m.Location).Throws<Exception>();
-        MovingObject.SetupGet(m => m.Velocity).Returns(new Vector( 1, 1 )).Verifiable();
+        MovingObject.SetupGet(m => m.Velocity).Returns(new Vector(1, 1)).Verifiable();
         var cmd = new Move(MovingObject.Object);
 
         Assert.Throws<Exception>( //Assert
@@ -38,7 +38,7 @@ public class MoveCommandTest
     public void TestVelocityRaisesException()
     {
         var MovingObject = new Mock<IMovingObject>();
-        MovingObject.SetupGet(m => m.Location).Returns(new Vector( 1, 1 )).Verifiable();
+        MovingObject.SetupGet(m => m.Location).Returns(new Vector(1, 1)).Verifiable();
         MovingObject.SetupGet(m => m.Velocity).Throws<Exception>();
         var cmd = new Move(MovingObject.Object);
 

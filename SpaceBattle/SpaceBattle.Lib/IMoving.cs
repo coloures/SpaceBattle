@@ -10,10 +10,10 @@ public interface ICommand
 }
 public interface IMovingObject
 {
-    public Vector Location {get;  set;}
-    public Vector Velocity{get;   }
+    public Vector Location { get; set; }
+    public Vector Velocity { get; }
 }
-public class Move: ICommand
+public class Move : ICommand
 {
     IMovingObject MovingObject;
     public Move(IMovingObject MovingObject)
@@ -29,14 +29,14 @@ public class Move: ICommand
 
 public class Vector
 {
-    int [] coordinates;
-    public Vector(params int [] coordinates)
+    int[] coordinates;
+    public Vector(params int[] coordinates)
     {
         this.coordinates = coordinates;
     }
     public static Vector operator +(Vector a, Vector b)
     {
-        a.coordinates = a.coordinates.Zip(b.coordinates, (x,y) => x + y).ToArray<int>();
+        a.coordinates = a.coordinates.Zip(b.coordinates, (x, y) => x + y).ToArray<int>();
         return a;
     }
     public static Vector operator *(Vector a, int b)
@@ -52,7 +52,7 @@ public class Vector
             {
                 return false;
             }
-            bool[] result = coordinates.Zip(other.coordinates, (x,y) => x == y ? true : false).ToArray<bool>();
+            bool[] result = coordinates.Zip(other.coordinates, (x, y) => x == y ? true : false).ToArray<bool>();
             return result.All(x => x == true);
         }
         return false;
