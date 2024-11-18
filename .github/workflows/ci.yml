@@ -24,7 +24,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Change directory to project folder
-      run: cd SpaceBattle
+      run: cd SpaceBattle/SpaceBattle
 
     - name: Checkstyle
       run: dotnet format SpaceBattle.sln --verify-no-changes
