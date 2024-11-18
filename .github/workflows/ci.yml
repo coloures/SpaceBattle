@@ -23,9 +23,12 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Add coverlet.msbuild package
-      run: dotnet add package coverlet.msbuild
-      
+    - name: Add coverlet.msbuild package to SpaceBattle.Lib
+      run: dotnet add ${{ github.workspace }}/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj package coverlet.msbuild
+  
+    - name: Add coverlet.msbuild package to SpaceBattle.Tests
+      run: dotnet add ${{ github.workspace }}/SpaceBattle/SpaceBattle.Tests/SpaceBattle.Tests.csproj package coverlet.msbuild
+    
     - name: Checkstyle
       run: dotnet format ${{ github.workspace }}/SpaceBattle/SpaceBattle.sln --verify-no-changes
 
