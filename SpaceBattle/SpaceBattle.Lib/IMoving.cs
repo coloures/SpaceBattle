@@ -57,4 +57,16 @@ public class Vector
         }
         return false;
     }
+    public override int GetHashCode()
+    {
+        const int prime = 7;
+        int result = 1;
+
+        foreach (var coordinate in coordinates)
+        {
+            result = result * prime + coordinate.GetHashCode();
+        }
+
+        return result;
+    }
 }
