@@ -24,8 +24,7 @@ jobs:
         dotnet-version: 8.0.x
     
     - name: Checkstyle
-      working-directory: ${{ env.DIR }}
-      run: dotnet format  --verify-no-changes
+      run: dotnet format ${{ github.workspace }}/SpaceBattle/SpaceBattle.sln --verify-no-changes
 
     - name: Restore dependencies
       run: dotnet restore ${{ github.workspace }}/SpaceBattle
@@ -40,5 +39,5 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./TestResults/coverage.cobertura.xml
+        path-to-lcov: ${{ github.workspace }}/SpaceBattle/SpaceBattle.Tests/coverage.cobertura.xml
         coveralls-repo-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
